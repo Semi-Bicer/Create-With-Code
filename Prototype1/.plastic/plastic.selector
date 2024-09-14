@@ -1,0 +1,4 @@
+repository "Prototype1@Yugix_Saga@cloud"
+  path "/"
+    br "/main"
+    co "/main"
