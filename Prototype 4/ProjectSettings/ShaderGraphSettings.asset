@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de02f9e1d18f588468e474319d09a723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<<< Updated upstream:Prototype 4/ProjectSettings/ShaderGraphSettings.asset
   shaderVariantLimit: 128
   overrideShaderVariantLimit: 0
   customInterpolatorErrorThreshold: 32
   customInterpolatorWarningThreshold: 16
   customHeatmapValues: {fileID: 0}
+========
+  m_SnapEnabled: 0
+  m_SnapSettings:
+    m_SnapToGrid: 1
+    m_Rotation: 15
+    m_Scale: 1
+>>>>>>>> Stashed changes:Prototype1/Library/EditorSnapSettings.asset

@@ -10,6 +10,15 @@
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
 
+**/[Pp]roject[Ss]ettings/[Aa]rtifacts/
+**/[Pp]roject[Ss]ettings/[Bb]ee/
+**/[Pp]roject[Ss]ettings/[Pp]ackage[Cc]ache/
+**/[Pp]roject[Ss]ettings/[Pp]ackage[Mm]anager/
+**/[Pp]roject[Ss]ettings/[Ss]cript[Aa]msemblies/
+**/[Pp]roject[Ss]ettings/[Ss]earch/
+**/[Pp]roject[Ss]ettings/[Ss]hader[Cc]ache/
+**/[Pp]roject[Ss]ettings/[Ss]tate[Cc]ache/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 [Mm]emoryCaptures/

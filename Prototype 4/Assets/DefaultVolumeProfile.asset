@@ -322,9 +322,12 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 0
+<<<<<<< Updated upstream
   filter:
     m_OverrideState: 1
     m_Value: 0
+=======
+>>>>>>> Stashed changes
   downscale:
     m_OverrideState: 1
     m_Value: 0

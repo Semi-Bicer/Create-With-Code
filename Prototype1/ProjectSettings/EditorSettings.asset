@@ -5,7 +5,11 @@ EditorSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
   m_SerializationMode: 2
+<<<<<<< Updated upstream
   m_LineEndingsForNewScripts: 2
+=======
+  m_LineEndingsForNewScripts: 1
+>>>>>>> Stashed changes
   m_DefaultBehaviorMode: 0
   m_PrefabRegularEnvironment: {fileID: 0}
   m_PrefabUIEnvironment: {fileID: 0}
