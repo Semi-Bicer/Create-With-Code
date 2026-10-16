@@ -1,6 +1,5 @@
 {
   "dependencies": {
-<<<<<<< Updated upstream
     "com.unity.ext.nunit": {
       "version": "2.0.5",
       "depth": 1,
@@ -16,8 +15,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> Stashed changes
     "com.unity.multiplayer.center": {
       "version": "1.0.1",
       "depth": 0,

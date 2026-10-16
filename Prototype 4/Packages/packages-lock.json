@@ -110,11 +110,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-<<<<<<< Updated upstream
       "version": "2.11.4",
-=======
-      "version": "2.11.3",
->>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -158,11 +154,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-<<<<<<< Updated upstream
       "version": "1.19.0",
-=======
-      "version": "1.18.0",
->>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -261,11 +253,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-<<<<<<< Updated upstream
       "version": "1.8.11",
-=======
-      "version": "1.8.10",
->>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -286,11 +274,7 @@
       }
     },
     "com.unity.visualscripting": {
-<<<<<<< Updated upstream
       "version": "1.9.10",
-=======
-      "version": "1.9.9",
->>>>>>> Stashed changes
       "depth": 0,
       "source": "registry",
       "dependencies": {
