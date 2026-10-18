@@ -6,6 +6,12 @@ public class DiceReader : MonoBehaviour
 
     public bool TryReadValue(out int resultValue)
     {
+        if (faceTable == null || faceTable.faces.Length == 0)
+        {
+            resultValue = -1;
+            return false;
+        }
+
         // değerleri resetlemek için burada tanımlandılar, global yerine. Kullanıcı tekrar zar atarsa bu değerlerin resetlenip tekrar hesaplanması gerekiyor.
         float bestDot = -2.0f; //Dot product values range between -1.0 and 1.0, so -2.0 guarantees the first face checked will be higher.
         int bestValue = -1;

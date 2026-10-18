@@ -27,4 +27,4 @@ MonoBehaviour:
     faceValueDirection: {x: -1, y: 0, z: 0}
   cockedThreshold: 0.9
   readsDownwardFace: 0
-  sides: 0
+  sides: 6

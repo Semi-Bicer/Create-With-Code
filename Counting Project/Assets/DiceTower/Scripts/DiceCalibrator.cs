@@ -1,12 +1,15 @@
-#if UNITY_EDITOR
 using System;
 using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 /*
  * This is a custom Editor-only utility. Its goal is to let you rotate any die in the Scene view so a specific number
  * points up, right-click the component, and have Unity calculate, clean up, and save that face's vector directly into
  * your DiceFaceTable asset.
+ * The class itself compiles in builds so a die that still carries it does not log a missing script; only the
+ * recording logic is editor-only.
  */
 
 public class DiceCalibrator : MonoBehaviour
@@ -14,6 +17,7 @@ public class DiceCalibrator : MonoBehaviour
     public DiceFaceTable targetTable;
     public int valueToRecord;
 
+#if UNITY_EDITOR
     [ContextMenu("Record Face")]
     public void RecordFace()
     {
@@ -68,5 +72,5 @@ public class DiceCalibrator : MonoBehaviour
         if (Math.Abs(val + 1f) < tolerance) return -1f;
         return val;
     }
-}
 #endif
+}
