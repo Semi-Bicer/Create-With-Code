@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb9919bb363de24a9de38ef8748df55, type: 3}
+  m_Name: D8_FaceTable
+  m_EditorClassIdentifier: 
+  faces:
+  - faceValue: 6
+    faceValueDirection: {x: 0.7986355, y: 0, z: -0.60181504}
+  - faceValue: 4
+    faceValueDirection: {x: 0, y: 0.7986355, z: -0.60181504}
+  - faceValue: 1
+    faceValueDirection: {x: -0, y: 0.7986355, z: 0.60181504}
+  - faceValue: 3
+    faceValueDirection: {x: -0.7986355, y: 0, z: 0.60181504}
+  - faceValue: 2
+    faceValueDirection: {x: -0.7986355, y: -0, z: -0.60181504}
+  - faceValue: 8
+    faceValueDirection: {x: 0, y: -0.7986355, z: -0.60181504}
+  - faceValue: 7
+    faceValueDirection: {x: 0.7986355, y: 0, z: 0.60181504}
+  - faceValue: 5
+    faceValueDirection: {x: 0, y: -0.7986355, z: 0.60181504}
+  cockedThreshold: 0.9
+  readsDownwardFace: 0
+  sides: 8

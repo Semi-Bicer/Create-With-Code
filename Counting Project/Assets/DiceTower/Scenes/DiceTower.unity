@@ -148,8 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709992774b514954d92fb4525e31b8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dicePrefab: {fileID: 1161722076746748569, guid: cb33c9e09c8de4e45950265ba8fc4fc8, type: 3}
-  diceCount: 5
+  diceSet:
+  - prefab: {fileID: 1161722076746748569, guid: cb33c9e09c8de4e45950265ba8fc4fc8, type: 3}
+    count: 5
   spawnAnchor: {fileID: 1171436965}
   ringRadius: 1.5
   spawnJitter: {x: 0.2, y: 0.4, z: 0.2}
@@ -2373,6 +2374,7 @@ GameObject:
   - component: {fileID: 1290988404}
   - component: {fileID: 1290988403}
   - component: {fileID: 1290988405}
+  - component: {fileID: 1290988406}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -2429,6 +2431,18 @@ MonoBehaviour:
   nudgeSpin: 10
   killHeight: -10
   maxDistanceFromTower: 60
+--- !u!114 &1290988406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290988402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ca083c8b32e7843b926eba22c42525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1303760321
 GameObject:
   m_ObjectHideFlags: 0

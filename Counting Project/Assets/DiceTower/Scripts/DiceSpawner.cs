@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /*
  * Spawns the dice for one roll and throws them. Dice start on a ring around the spawn anchor so they never overlap,
@@ -11,9 +13,15 @@ using UnityEngine;
  */
 public class DiceSpawner : MonoBehaviour
 {
+    [Serializable]
+    public struct Entry
+    {
+        public Die prefab;
+        [Min(0)] public int count;
+    }
+
     [Header("Dice")]
-    [SerializeField] Die dicePrefab;
-    [SerializeField, Min(1)] int diceCount = 5;
+    [SerializeField] Entry[] diceSet = new Entry[0];
 
     [Header("Spawn")]
     [SerializeField] Transform spawnAnchor;
@@ -34,7 +42,19 @@ public class DiceSpawner : MonoBehaviour
 
     public IReadOnlyList<Die> Dice => dice;
     public bool IsReleasing => release != null;
-    public int DiceCount => diceCount;
+
+    public int DiceCount
+    {
+        get
+        {
+            int total = 0;
+            foreach (Entry entry in diceSet)
+            {
+                if (entry.prefab != null) total += entry.count;
+            }
+            return total;
+        }
+    }
 
     public void Throw(Vector3 swipeDirection, float strength)
     {
@@ -48,18 +68,19 @@ public class DiceSpawner : MonoBehaviour
         Vector3 direction = ThrowDirection(anchor.position, swipeDirection);
         float speed = Mathf.Lerp(minThrowSpeed, maxThrowSpeed, Mathf.Clamp01(strength));
         var wait = new WaitForSeconds(releaseInterval);
+        List<Die> order = ShuffledSet();
 
-        for (int i = 0; i < diceCount; i++)
+        for (int i = 0; i < order.Count; i++)
         {
             if (i > 0 && releaseInterval > 0f) yield return wait;
 
-            float angle = (i + Random.value * 0.3f) * Mathf.PI * 2f / diceCount;
-            Vector3 ring = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * (diceCount > 1 ? ringRadius : 0f);
+            float angle = (i + Random.value * 0.3f) * Mathf.PI * 2f / order.Count;
+            Vector3 ring = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * (order.Count > 1 ? ringRadius : 0f);
             Vector3 jitter = Vector3.Scale(Random.insideUnitSphere, spawnJitter);
             Vector3 position = anchor.TransformPoint(ring + jitter);
 
-            Die die = Instantiate(dicePrefab, position, Random.rotation, transform);
-            die.name = $"{dicePrefab.name}_{i}";
+            Die die = Instantiate(order[i], position, Random.rotation, transform);
+            die.name = $"{order[i].name}_{i}";
             dice.Add(die);
 
             Vector3 dieDirection = (direction + Random.insideUnitSphere * throwSpread).normalized;
@@ -82,6 +103,24 @@ public class DiceSpawner : MonoBehaviour
             if (die != null) Destroy(die.gameObject);
         }
         dice.Clear();
+    }
+
+    // Mixed sets leave the tower in random order rather than grouped by type.
+    List<Die> ShuffledSet()
+    {
+        var order = new List<Die>();
+        foreach (Entry entry in diceSet)
+        {
+            if (entry.prefab == null) continue;
+            for (int i = 0; i < entry.count; i++) order.Add(entry.prefab);
+        }
+
+        for (int i = order.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (order[i], order[j]) = (order[j], order[i]);
+        }
+        return order;
     }
 
     Vector3 ThrowDirection(Vector3 from, Vector3 swipeDirection)

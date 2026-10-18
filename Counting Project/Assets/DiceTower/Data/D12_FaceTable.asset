@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb9919bb363de24a9de38ef8748df55, type: 3}
+  m_Name: D12_FaceTable
+  m_EditorClassIdentifier: 
+  faces:
+  - faceValue: 3
+    faceValueDirection: {x: -6.194873e-15, y: 1, z: 0.00000021324803}
+  - faceValue: 10
+    faceValueDirection: {x: 0, y: -1, z: -0.00000017252131}
+  - faceValue: 7
+    faceValueDirection: {x: -0.7236068, y: -0.44721332, z: 0.52573127}
+  - faceValue: 4
+    faceValueDirection: {x: -0.7236069, y: -0.44721314, z: -0.5257314}
+  - faceValue: 11
+    faceValueDirection: {x: -0.89442724, y: 0.44721353, z: 0.00000004768372}
+  - faceValue: 2
+    faceValueDirection: {x: 0.89442724, y: -0.44721347, z: -0.00000007715385}
+  - faceValue: 6
+    faceValueDirection: {x: 0.7236068, y: 0.44721338, z: -0.5257312}
+  - faceValue: 12
+    faceValueDirection: {x: 0.27639323, y: -0.4472134, z: -0.8506509}
+  - faceValue: 5
+    faceValueDirection: {x: 0.27639323, y: -0.44721362, z: 0.8506508}
+  - faceValue: 9
+    faceValueDirection: {x: 0.7236069, y: 0.44721317, z: 0.5257314}
+  - faceValue: 8
+    faceValueDirection: {x: -0.27639326, y: 0.44721377, z: -0.85065067}
+  - faceValue: 1
+    faceValueDirection: {x: -0.27639323, y: 0.44721335, z: 0.85065097}
+  cockedThreshold: 0.9
+  readsDownwardFace: 0
+  sides: 12

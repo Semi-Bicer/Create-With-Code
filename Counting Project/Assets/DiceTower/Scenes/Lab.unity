@@ -365,8 +365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709992774b514954d92fb4525e31b8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dicePrefab: {fileID: 1161722076746748569, guid: cb33c9e09c8de4e45950265ba8fc4fc8, type: 3}
-  diceCount: 5
+  diceSet:
+  - prefab: {fileID: 1161722076746748569, guid: cb33c9e09c8de4e45950265ba8fc4fc8, type: 3}
+    count: 5
   spawnAnchor: {fileID: 622008835}
   ringRadius: 1.6
   spawnJitter: {x: 0.2, y: 0.4, z: 0.2}
