@@ -9,9 +9,11 @@ using Random = UnityEngine.Random;
  * Before a throw the dice wait in the hand in front of the camera, each turning about its own random axis, so the
  * player sees what they are about to roll. A throw releases them one after another rather than all at once: five dice
  * reaching a baffle edge together wedge into an arch across the gap, a stream of dice does not.
- * With an aim target (the tower mouth) each die gets the ballistic velocity that carries it to a point above the
- * target in the flight time. The swipe shifts that point sideways and a faster swipe shortens the flight, so every
- * throw is different but none misses the tower. Without a target the die is simply thrown along the swipe.
+ * With an aim target (the tower mouth) each die is lobbed: it rises to an apex and drops onto a landing point just
+ * above the shaft. Coming down from the apex it enters the funnel steeply; a flatter shot aimed above the mouth kept
+ * its forward speed while it fell the last few units and sailed over the back lip. A stronger swipe throws a higher
+ * arc and a sideways swipe moves the landing point within the shaft, so throws differ but none misses the tower.
+ * Without a target the die is simply thrown along the swipe.
  * Held dice sit in rows on the hand anchor. Without one they wait on a ring around the spawn anchor, each a golden
  * angle (~137.5 deg) further round than the previous one so consecutive dice never overlap.
  */
@@ -42,10 +44,10 @@ public class DiceSpawner : MonoBehaviour
     [SerializeField, Min(0f)] float releaseInterval = 0.2f;
     [SerializeField] float spinSpeed = 18f;
     [SerializeField] Transform aimTarget;
-    [SerializeField, Tooltip("How far above the aim target the dice are thrown to; enough to clear the funnel lip.")] float aimHeight = 3.5f;
-    [SerializeField, Tooltip("Sideways shift of the landing point for a fully sideways swipe.")] float swipeAim = 1.8f;
-    [SerializeField] float aimJitter = 0.7f;
-    [SerializeField, Tooltip("Flight time for a full-strength swipe (x) and a weak one (y).")] Vector2 flightTime = new Vector2(0.75f, 1.05f);
+    [SerializeField, Tooltip("Apex of the lob above the aim target for a weak (x) and a full-strength (y) swipe.")] Vector2 apexHeight = new Vector2(5.5f, 9f);
+    [SerializeField, Tooltip("Height of the landing point above the aim target.")] float landingHeight = 1f;
+    [SerializeField, Tooltip("Sideways shift of the landing point for a fully sideways swipe.")] float swipeAim = 1.5f;
+    [SerializeField] float aimJitter = 0.6f;
     [SerializeField] float minThrowSpeed = 4f;
     [SerializeField] float maxThrowSpeed = 11f;
 
@@ -153,10 +155,17 @@ public class DiceSpawner : MonoBehaviour
         Vector3 side = Vector3.Cross(Vector3.up, toTarget.normalized);
         float sideways = Vector3.Dot(swipeDirection, side);
         Vector2 jitter = Random.insideUnitCircle * aimJitter;
+        Vector3 landing = aimTarget.position + Vector3.up * landingHeight + side * (sideways * swipeAim) + new Vector3(jitter.x, 0f, jitter.y);
 
-        Vector3 landing = aimTarget.position + Vector3.up * aimHeight + side * (sideways * swipeAim) + new Vector3(jitter.x, 0f, jitter.y);
-        float time = Mathf.Lerp(flightTime.y, flightTime.x, strength);
-        return (landing - from) / time - 0.5f * time * Physics.gravity;
+        float gravity = -Physics.gravity.y;
+        float apex = aimTarget.position.y + Mathf.Lerp(apexHeight.x, apexHeight.y, strength);
+        apex = Mathf.Max(apex, Mathf.Max(from.y, landing.y) + 0.5f);
+
+        float rise = Mathf.Sqrt(2f * gravity * (apex - from.y));
+        float time = rise / gravity + Mathf.Sqrt(2f * (apex - landing.y) / gravity);
+        Vector3 across = landing - from;
+        across.y = 0f;
+        return across / time + Vector3.up * rise;
     }
 
     Vector3 HoldPosition(int index, int count)

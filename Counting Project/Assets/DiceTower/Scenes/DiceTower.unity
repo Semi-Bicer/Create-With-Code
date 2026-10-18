@@ -171,10 +171,10 @@ MonoBehaviour:
   releaseInterval: 0.2
   spinSpeed: 18
   aimTarget: {fileID: 2114807536}
-  aimHeight: 5
-  swipeAim: 1.8
-  aimJitter: 0.7
-  flightTime: {x: 0.75, y: 1.05}
+  apexHeight: {x: 5.5, y: 9}
+  landingHeight: 1
+  swipeAim: 1.5
+  aimJitter: 0.6
   minThrowSpeed: 2
   maxThrowSpeed: 7
 --- !u!4 &1614721
