@@ -82,8 +82,14 @@ public class RollManager : MonoBehaviour
     public void ClearTable()
     {
         spawner.Clear();
+        spawner.PrepareHand();
         LastResult = null;
         SetState(RollState.Idle);
+    }
+
+    void Start()
+    {
+        spawner.PrepareHand();
     }
 
     void Update()
@@ -149,6 +155,7 @@ public class RollManager : MonoBehaviour
         LastResult = result;
         SetState(RollState.Result);
         RollCompleted?.Invoke(result);
+        spawner.PrepareHand();
     }
 
     // A die that never made it into the tray (usually wedged in the exit behind the pile) is re-dropped straight away;

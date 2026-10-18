@@ -66,6 +66,7 @@ public class DiceSetPanel : MonoBehaviour
         if (next < 0 || total < 1 || total > maxTotal) return;
 
         spawner.SetCount(index, next);
+        spawner.PrepareHand();
         PlayerPrefs.SetInt(Key(index), next);
         PlayerPrefs.Save();
         Refresh();

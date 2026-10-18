@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5029071688735757614}
   - component: {fileID: 3644058267624820141}
   - component: {fileID: 1161722076746748569}
+  - component: {fileID: 6539363917616559921}
   m_Layer: 7
   m_Name: Dice_d6
   m_TagString: Untagged
@@ -224,3 +225,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfaa9fb047bf984f961f82bff645331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6539363917616559921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480525804154556286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c505f91a93399c246af48111fbcabf25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaces:
+    serializedVersion: 2
+    m_Bits: 64
+  minHeight: 2.5
+  minImpactSpeed: 2
+  spinPerImpactSpeed: 1.2
+  maxImpactSpin: 20
+  slideSpeed: 2
+  slideSpinBelow: 4
+  rollAcceleration: 60

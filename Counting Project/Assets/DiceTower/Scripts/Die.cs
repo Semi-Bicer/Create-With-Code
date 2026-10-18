@@ -2,7 +2,8 @@ using UnityEngine;
 
 /*
  * One handle per die so the spawner and the roll manager never have to fetch the reader, settle detector and body
- * separately. It owns the two ways a die gets set in motion: a launch from the spawner and a nudge from the manager.
+ * separately. It owns the ways a die gets set in motion: held in the hand, launched by the spawner, nudged by the
+ * manager.
  */
 [RequireComponent(typeof(Rigidbody), typeof(DiceReader), typeof(DiceSettle))]
 public class Die : MonoBehaviour
@@ -11,6 +12,10 @@ public class Die : MonoBehaviour
     public DiceReader Reader { get; private set; }
     public DiceSettle Settle { get; private set; }
     public DiceColor Tint { get; private set; }
+    public bool IsHeld { get; private set; }
+
+    Collider shape;
+    RigidbodyInterpolation interpolation;
 
     void Awake()
     {
@@ -18,6 +23,25 @@ public class Die : MonoBehaviour
         Reader = GetComponent<DiceReader>();
         Settle = GetComponent<DiceSettle>();
         Tint = GetComponent<DiceColor>();
+        shape = GetComponent<Collider>();
+        interpolation = Body.interpolation;
+    }
+
+    // Parks the die in the hand: no physics and no collisions, so it can be turned in place by its transform.
+    public void Hold()
+    {
+        IsHeld = true;
+        Body.isKinematic = true;
+        Body.interpolation = RigidbodyInterpolation.None;
+        shape.enabled = false;
+    }
+
+    public void Release()
+    {
+        IsHeld = false;
+        shape.enabled = true;
+        Body.isKinematic = false;
+        Body.interpolation = interpolation;
     }
 
     public void Launch(Vector3 velocity, Vector3 angularVelocity)

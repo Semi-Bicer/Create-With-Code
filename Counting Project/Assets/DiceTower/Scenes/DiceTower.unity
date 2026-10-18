@@ -161,16 +161,22 @@ MonoBehaviour:
     count: 0
   - prefab: {fileID: 458396491280478037, guid: e059b53360fdfd149af7eab467a8be16, type: 3}
     count: 0
+  handAnchor: {fileID: 1230418781}
+  handColumns: 5
+  handSpacing: 2.5
+  handSpin: {x: 60, y: 180}
   spawnAnchor: {fileID: 1171436965}
   ringRadius: 1.5
   spawnJitter: {x: 0.2, y: 0.4, z: 0.2}
   releaseInterval: 0.2
-  minThrowSpeed: 2
-  maxThrowSpeed: 7
-  throwSpread: 0.12
   spinSpeed: 18
   aimTarget: {fileID: 2114807536}
-  aimAssist: 0.75
+  aimHeight: 5
+  swipeAim: 1.8
+  aimJitter: 0.7
+  flightTime: {x: 0.75, y: 1.05}
+  minThrowSpeed: 2
+  maxThrowSpeed: 7
 --- !u!4 &1614721
 Transform:
   m_ObjectHideFlags: 0
@@ -3405,6 +3411,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226626801}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1230418780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230418781}
+  m_Layer: 0
+  m_Name: HandAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1230418781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230418780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.24230178, y: -0, z: -0, w: 0.97020096}
+  m_LocalPosition: {x: 0, y: 23.469982, z: -19.054373}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2045137625}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1290988402
 GameObject:
   m_ObjectHideFlags: 0
@@ -5426,6 +5463,7 @@ Transform:
   m_Children:
   - {fileID: 2079874167}
   - {fileID: 550829914}
+  - {fileID: 1230418781}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2056647810
