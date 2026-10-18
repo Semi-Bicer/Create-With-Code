@@ -5,8 +5,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 /*
- * Spawns the dice for one roll and throws them. Dice start on a ring around the spawn anchor so they never overlap,
- * each with a random rotation. The throw direction comes from the swipe; when an aim target is set (the tower mouth)
+ * Spawns the dice for one roll and throws them. Dice start on a ring around the spawn anchor, each a golden angle
+ * (~137.5 deg) further round than the previous one, so consecutive dice never spawn on top of each other however many
+ * there are; each gets a random rotation. The throw direction comes from the swipe; when an aim target is set (the tower mouth)
  * the swipe direction is bent toward it so a sloppy swipe still lands the dice in the tower.
  * Dice are released one after another rather than all at once: five dice reaching a baffle edge together wedge into
  * an arch across the gap, a stream of dice does not.
@@ -40,8 +41,15 @@ public class DiceSpawner : MonoBehaviour
     readonly List<Die> dice = new List<Die>();
     Coroutine release;
 
+    const float GoldenAngle = 2.39996323f;
+
     public IReadOnlyList<Die> Dice => dice;
     public bool IsReleasing => release != null;
+    public int EntryCount => diceSet.Length;
+
+    public Die GetPrefab(int index) => diceSet[index].prefab;
+    public int GetCount(int index) => diceSet[index].count;
+    public void SetCount(int index, int count) => diceSet[index].count = Mathf.Max(0, count);
 
     public int DiceCount
     {
@@ -74,7 +82,7 @@ public class DiceSpawner : MonoBehaviour
         {
             if (i > 0 && releaseInterval > 0f) yield return wait;
 
-            float angle = (i + Random.value * 0.3f) * Mathf.PI * 2f / order.Count;
+            float angle = i * GoldenAngle + Random.value * 0.3f;
             Vector3 ring = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * (order.Count > 1 ? ringRadius : 0f);
             Vector3 jitter = Vector3.Scale(Random.insideUnitSphere, spawnJitter);
             Vector3 position = anchor.TransformPoint(ring + jitter);

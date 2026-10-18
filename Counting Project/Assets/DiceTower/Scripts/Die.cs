@@ -27,11 +27,10 @@ public class Die : MonoBehaviour
         Settle.ResetSettle();
     }
 
-    // Pops a cocked or stuck die back into the air with a fresh spin.
-    public void Nudge(float upSpeed, float spin)
+    // Kicks a cocked or stuck die with the given velocity change and a fresh spin.
+    public void Nudge(Vector3 velocityChange, float spin)
     {
-        Vector3 direction = (Vector3.up + Random.insideUnitSphere * 0.35f).normalized;
-        Body.AddForce(direction * upSpeed, ForceMode.VelocityChange);
+        Body.AddForce(velocityChange, ForceMode.VelocityChange);
         Body.AddTorque(Random.insideUnitSphere * spin, ForceMode.VelocityChange);
         Settle.ResetSettle();
     }

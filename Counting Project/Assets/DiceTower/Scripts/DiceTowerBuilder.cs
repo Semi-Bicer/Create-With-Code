@@ -9,7 +9,9 @@ using UnityEngine;
  * and the opposite wall, the height under a baffle, the exit mouth - must be clear of 1-2 die widths, because two dice
  * wedge across anything narrower than about three. Widths that are a whole number of dice are just as bad: a row of
  * exactly-fitting dice locks between the side walls, so the shaft is 3.5 dice wide. Baffles need to be steeper than the
- * dice's friction angle, and the exit ramp needs about 30 degrees or cube dice stop on it.
+ * dice's friction angle, and the exit ramp needs about 30 degrees or cube dice stop on it. The ramp should meet the
+ * tray floor flush at the front wall: any sloped surface left inside the tray is somewhere a die can come to rest
+ * tilted, which reads as cocked.
  *
  * Layout in local space: the shaft is centered on the origin with its front wall facing -Z. Baffles alternate between
  * the back and front walls, the lowest one hanging from the front so dice land at the back of the exit ramp. The ramp
@@ -34,8 +36,8 @@ public class DiceTowerBuilder : MonoBehaviour
 
     [Header("Exit ramp")]
     [SerializeField] float rampHighY = 6f;
-    [SerializeField] float rampLowY = 0.05f;
-    [SerializeField, Tooltip("How far the ramp reaches past the front wall into the tray.")] float rampOverhang = 1.5f;
+    [SerializeField] float rampLowY = 0f;
+    [SerializeField, Tooltip("How far the ramp reaches past the front wall into the tray.")] float rampOverhang = 0f;
 
     [Header("Funnel")]
     [SerializeField] float funnelHeight = 3f;

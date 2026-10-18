@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 /*
  * Turns a press-drag-release on any pointer (mouse, touch, pen) into a throw. The screen-space swipe is measured in
  * screen heights so it feels the same on every resolution, then mapped onto the camera's ground plane with an upward
  * lob. Strength comes from swipe speed. Space throws straight ahead at medium strength for desktop testing.
+ * A press that starts on UI is ignored, so dragging across the dice panel never throws.
  */
 public class SwipeThrowInput : MonoBehaviour
 {
@@ -49,6 +51,7 @@ public class SwipeThrowInput : MonoBehaviour
 
         if (pointer.press.wasPressedThisFrame)
         {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
             tracking = true;
             pressPosition = pointer.position.ReadValue();
             pressTime = Time.unscaledTime;

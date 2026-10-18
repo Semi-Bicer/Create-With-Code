@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 /*
- * Shows the state hint and, once a roll completes, the total plus one chip per die in that die's color. Chips are
- * cloned from an inactive template under the chip row, so the layout is edited in the scene rather than in code.
+ * Shows the state hint and, once a roll completes, the total plus one chip per die in that die's color, with the value
+ * and the die type (d4 ... d20), grouped by type. Chips are cloned from an inactive template under the chip row, so the
+ * layout is edited in the scene rather than in code; the panel widens to fit however many dice were rolled.
  */
 public class RollResultView : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class RollResultView : MonoBehaviour
     [SerializeField] RectTransform chipRow;
     [SerializeField] Image chipTemplate;
     [SerializeField] float fadeDuration = 0.25f;
+    [SerializeField] float minPanelWidth = 760f;
+    [SerializeField] float panelPadding = 80f;
 
     readonly List<Image> chips = new List<Image>();
     float targetAlpha;
@@ -82,18 +86,39 @@ public class RollResultView : MonoBehaviour
             chips.Add(Instantiate(chipTemplate, chipRow));
         }
 
+        List<DieResult> dice = result.Dice.OrderBy(d => d.sides).ToList();
         for (int i = 0; i < chips.Count; i++)
         {
-            bool used = i < result.Dice.Count;
+            bool used = i < dice.Count;
             chips[i].gameObject.SetActive(used);
             if (!used) continue;
 
-            DieResult die = result.Dice[i];
+            DieResult die = dice[i];
+            Color ink = Luminance(die.color) > 0.55f ? new Color(0.1f, 0.1f, 0.1f) : Color.white;
             chips[i].color = die.color;
-            TMP_Text label = chips[i].GetComponentInChildren<TMP_Text>(true);
-            label.text = die.value.ToString();
-            label.color = Luminance(die.color) > 0.55f ? new Color(0.1f, 0.1f, 0.1f) : Color.white;
+            SetLabel(chips[i], "Value", die.value.ToString(), ink);
+            SetLabel(chips[i], "Type", die.sides > 0 ? "d" + die.sides : "", ink);
         }
+
+        FitPanel(dice.Count);
+    }
+
+    void FitPanel(int chipCount)
+    {
+        var layout = chipRow.GetComponent<HorizontalLayoutGroup>();
+        float spacing = layout != null ? layout.spacing : 0f;
+        float width = chipCount * chipTemplate.rectTransform.sizeDelta.x + Mathf.Max(0, chipCount - 1) * spacing + panelPadding;
+        var panel = (RectTransform)resultPanel.transform;
+        panel.sizeDelta = new Vector2(Mathf.Max(minPanelWidth, width), panel.sizeDelta.y);
+    }
+
+    static void SetLabel(Image chip, string childName, string text, Color color)
+    {
+        Transform child = chip.transform.Find(childName);
+        if (child == null) return;
+        TMP_Text label = child.GetComponent<TMP_Text>();
+        label.text = text;
+        label.color = color;
     }
 
     static float Luminance(Color c) => 0.2126f * c.r + 0.7152f * c.g + 0.0722f * c.b;
