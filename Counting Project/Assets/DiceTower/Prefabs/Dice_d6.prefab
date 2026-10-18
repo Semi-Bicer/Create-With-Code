@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1386750484092357384}
   - component: {fileID: 2152925234684378876}
   - component: {fileID: 5029071688735757614}
+  - component: {fileID: 3644058267624820141}
   m_Layer: 7
   m_Name: Dice_d6
   m_TagString: Untagged
@@ -167,3 +168,46 @@ MonoBehaviour:
   linearThreshold: 0.05
   angularThreshold: 0.1
   quietDuration: 0.4
+--- !u!114 &3644058267624820141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480525804154556286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9354c383ed06a0f4d8e197e875790b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  palette:
+    serializedVersion: 2
+    key0: {r: 0.93, g: 0.26, b: 0.26, a: 1}
+    key1: {r: 1, g: 0.58, b: 0.18, a: 1}
+    key2: {r: 1, g: 0.85, b: 0.25, a: 0}
+    key3: {r: 0.35, g: 0.8, b: 0.38, a: 0}
+    key4: {r: 0.22, g: 0.76, b: 0.8, a: 0}
+    key5: {r: 0.3, g: 0.52, b: 0.96, a: 0}
+    key6: {r: 0.62, g: 0.4, b: 0.92, a: 0}
+    key7: {r: 0.97, g: 0.97, b: 0.97, a: 0}
+    ctime0: 8192
+    ctime1: 16384
+    ctime2: 24576
+    ctime3: 32768
+    ctime4: 40959
+    ctime5: 49151
+    ctime6: 57343
+    ctime7: 65535
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_ColorSpace: -1
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 2
+  randomizeOnAwake: 1
