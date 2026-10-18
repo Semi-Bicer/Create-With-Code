@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5983368422492259723}
   - component: {fileID: 1386750484092357384}
   - component: {fileID: 2152925234684378876}
+  - component: {fileID: 5029071688735757614}
   m_Layer: 7
   m_Name: Dice_d6
   m_TagString: Untagged
@@ -151,3 +152,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceTable: {fileID: 11400000, guid: bf16e3d6aabbd934b94586079ec72a55, type: 2}
+--- !u!114 &5029071688735757614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480525804154556286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6d57f38ac91724fa6a371f92a09ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linearThreshold: 0.05
+  angularThreshold: 0.1
+  quietDuration: 0.4
