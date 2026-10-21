@@ -1,0 +1,21 @@
+# Git LFS for new dice tower art only.
+# Existing binaries (dice set collection, TextMesh Pro) are regular git blobs,
+# so their paths are deliberately left unmatched here.
+
+# Blender source files, wherever they end up
+*.blend filter=lfs diff=lfs merge=lfs -text
+
+# Source art kept outside Assets (not imported by Unity)
+SourceArt/** filter=lfs diff=lfs merge=lfs -text
+
+# Dice tower models and textures imported by Unity
+Assets/DiceTower/**/*.fbx filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.obj filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.glb filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.png filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.tga filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.psd filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.tif filter=lfs diff=lfs merge=lfs -text
+Assets/DiceTower/**/*.exr filter=lfs diff=lfs merge=lfs -text

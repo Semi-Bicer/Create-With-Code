@@ -73,6 +73,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Blender autosave backups (.blend1, .blend2, ...)
+*.blend[0-9]*
+
 # Packed Addressables
 [Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
