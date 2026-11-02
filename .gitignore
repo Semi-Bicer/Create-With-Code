@@ -89,3 +89,6 @@ crashlytics-build.properties
 
 # Promo shots and videos
 /Shots/
+
+# Unity crash dumps
+mono_crash.*
