@@ -4,14 +4,14 @@ using UnityEngine;
 // INHERITANCE
 public class CylinderShape : Shape
 {
-    public float pulseMultiplier = 1.35f;
+    public float pulseMultiplier = 1.4f;
     private Vector3 m_InitialScale;
     private bool m_IsAnimating = false;
 
     protected override void Start()
     {
         ShapeName = "Cylinder";
-        ShapeColor = new Color(0.95f, 0.78f, 0.15f, 1.0f);
+        ShapeColor = new Color(0.25f, 0.85f, 0.40f, 1.0f);
         m_InitialScale = transform.localScale;
         base.Start();
     }
@@ -19,7 +19,7 @@ public class CylinderShape : Shape
     // POLYMORPHISM
     public override string GetDescription()
     {
-        return $"[Cylinder] Pulses in size! Clicked {ClickCount} time(s).";
+        return $"{base.GetDescription()} | I pulse to {pulseMultiplier:0.0}x scale!";
     }
 
     // POLYMORPHISM

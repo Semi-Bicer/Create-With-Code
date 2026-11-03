@@ -49,6 +49,11 @@ public abstract class Shape : MonoBehaviour
         ApplyMaterialColor();
     }
 
+    protected virtual void OnValidate()
+    {
+        ApplyMaterialColor();
+    }
+
     // ABSTRACTION
     protected void ApplyMaterialColor()
     {
@@ -57,6 +62,7 @@ public abstract class Shape : MonoBehaviour
         {
             MaterialPropertyBlock block = new MaterialPropertyBlock();
             block.SetColor("_BaseColor", m_ShapeColor);
+            block.SetColor("_Color", m_ShapeColor);
             renderer.SetPropertyBlock(block);
         }
     }

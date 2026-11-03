@@ -8,6 +8,7 @@ public class MainSceneController : MonoBehaviour
     public Camera gameCamera;
     public Text playerGreetingText;
     public Text shapeInfoText;
+    public Text oopPillText;
 
     private InputAction m_ClickAction;
 
@@ -45,7 +46,11 @@ public class MainSceneController : MonoBehaviour
         string playerName = DataManager.Instance != null ? DataManager.Instance.PlayerName : "Player";
         if (playerGreetingText != null)
         {
-            playerGreetingText.text = $"Welcome, {playerName}! Click any shape to test OOP:";
+            playerGreetingText.text = $"Player: {playerName}";
+        }
+        if (oopPillText != null)
+        {
+            oopPillText.text = $"ENCAPSULATION: DataManager.Instance.PlayerName = \"{playerName}\"";
         }
     }
 
@@ -62,6 +67,10 @@ public class MainSceneController : MonoBehaviour
             if (clickedShape != null && shapeInfoText != null)
             {
                 shapeInfoText.text = clickedShape.HandleSelection();
+                if (oopPillText != null)
+                {
+                    oopPillText.text = $"POLYMORPHISM: {clickedShape.GetType().Name}.AnimateShape()";
+                }
             }
         }
     }

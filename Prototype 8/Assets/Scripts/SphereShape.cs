@@ -4,14 +4,14 @@ using UnityEngine;
 // INHERITANCE
 public class SphereShape : Shape
 {
-    public float bounceHeight = 0.8f;
+    public float bounceHeight = 1.5f;
     private Vector3 m_InitialPosition;
     private bool m_IsAnimating = false;
 
     protected override void Start()
     {
         ShapeName = "Sphere";
-        ShapeColor = new Color(0.2f, 0.85f, 0.35f, 1.0f);
+        ShapeColor = new Color(0.95f, 0.25f, 0.25f, 1.0f);
         m_InitialPosition = transform.position;
         base.Start();
     }
@@ -19,7 +19,7 @@ public class SphereShape : Shape
     // POLYMORPHISM
     public override string GetDescription()
     {
-        return $"[Sphere] Bounces smoothly! Clicked {ClickCount} time(s).";
+        return $"{base.GetDescription()} | I bounce up by {bounceHeight:0.0}m!";
     }
 
     // POLYMORPHISM

@@ -4,20 +4,22 @@ using UnityEngine;
 // INHERITANCE
 public class CubeShape : Shape
 {
-    public float spinSpeed = 720f;
+    public float spinSpeed = 360f;
+    private Quaternion m_InitialRotation;
     private bool m_IsAnimating = false;
 
     protected override void Start()
     {
         ShapeName = "Cube";
-        ShapeColor = new Color(0.2f, 0.55f, 0.95f, 1.0f);
+        ShapeColor = new Color(0.20f, 0.60f, 0.95f, 1.0f);
+        m_InitialRotation = transform.rotation;
         base.Start();
     }
 
     // POLYMORPHISM
     public override string GetDescription()
     {
-        return $"[Cube] Spins 360 degrees! Clicked {ClickCount} time(s).";
+        return $"{base.GetDescription()} | I spin at {spinSpeed:0} deg/s!";
     }
 
     // POLYMORPHISM
@@ -43,7 +45,7 @@ public class CubeShape : Shape
             yield return null;
         }
 
-        transform.rotation = Quaternion.identity;
+        transform.rotation = m_InitialRotation;
         m_IsAnimating = false;
     }
 }
